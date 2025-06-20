@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Играть в "Симулятор Бабки Нинки" - ZAEBIZGAMEZ</title>
+    <meta name="description" content="Играйте в 'Симулятор Бабки Нинки' онлайн прямо сейчас. Погрузитесь в уникальный мир приключений с Бабкой Нинкой.">
+    <meta name="keywords" content="Симулятор Бабки Нинки, играть онлайн, HTML5 игра, ZAEBIZGAMEZ, бесплатная игра, приключения Бабки Нинки">
+    <meta name="author" content="ZAEBIZGAMEZ">
+    <link rel="canonical" href="https://gamez.zaebizwear.com/game.html">
+    <link rel="icon" href="https://www.gtabase.com/images/jch-optimize/ng/images_gta-san-andreas_characters_benny.webp" type="image/webp">
+    <link rel="apple-touch-icon" href="https://www.gtabase.com/images/jch-optimize/ng/images_gta-san-andreas_characters_benny.webp">
+</head>
+<body>
+    <nav id="mainNav">
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="game.html">Играть</a></li>
+            <li><a href="about.html">О Студии</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <header id="mainHeader">
+            <div class="logo">
+                <img src="https://www.gtabase.com/images/jch-optimize/ng/images_gta-san-andreas_characters_benny.webp" alt="Логотип ZAEBIZGAMEZ">
+            </div>
+            <h1>Симулятор Бабки Нинки <span>Почувствуй себя в шкуре легенды</span></h1>
+        </header>
+
+        <section class="game-section">
+            <h2>Погрузитесь в мир Бабки Нинки!</h2>
+            <img src="https://zaebizwear.com/pidor/oblozhka.jpg" alt="Обложка игры Симулятор Бабки Нинки" onclick="startGame()">
+            <p>Нажмите на обложку игры, чтобы начать незабываемое приключение в "Симуляторе Бабки Нинки". Приготовьтесь к уникальному игровому опыту, который полностью поглотит вас! Это не просто игра, это вызов!</p>
+            <button onclick="startGame()">Начать игру на весь экран</button>
+        </section>
+    </div>
+
+    <div id="gameFullscreenContainer" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:black; z-index:9999;">
+        <iframe id="gameFrame" src="https://zaebizwear.com/pidor/babka" allowfullscreen></iframe>
+        <button id="closeFullscreen" onclick="closeGame()" style="position:absolute; top:10px; right:10px; background-color:red; color:white; border:none; padding:10px 15px; cursor:pointer; z-index:10000;">Закрыть игру</button>
+    </div>
+
+    <footer id="mainFooter">
+        &copy; 2025 ZAEBIZGAMEZ. Все права защищены.
+    </footer>
+
+    <script>
+        function startGame() {
+            const gameContainer = document.getElementById('gameFullscreenContainer');
+            const iframe = document.getElementById('gameFrame');
+
+            gameContainer.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+
+            document.getElementById('mainNav').style.display = 'none';
+            document.getElementById('mainHeader').style.display = 'none';
+            document.querySelector('.container').style.display = 'none';
+            document.getElementById('mainFooter').style.display = 'none';
+
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.mozRequestFullScreen) {
+                iframe.mozRequestFullScreen();
+            } else if (iframe.webkitRequestFullscreen) {
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) {
+                iframe.msRequestFullscreen();
+            }
+        }
+
+        function closeGame() {
+            const gameContainer = document.getElementById('gameFullscreenContainer');
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+
+            gameContainer.style.display = 'none';
+            document.body.style.overflow = '';
+
+            document.getElementById('mainNav').style.display = 'block';
+            document.getElementById('mainHeader').style.display = 'block';
+            document.querySelector('.container').style.display = 'block';
+            document.getElementById('mainFooter').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
